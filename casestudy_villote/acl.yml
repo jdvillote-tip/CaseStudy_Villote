@@ -1,0 +1,38 @@
+---
+
+- hosts: routers
+  gather_facts: false
+  connection: network_cli
+  become_method: enable
+
+  tasks:
+
+    - name: Implementing Access List for ROOM1
+      when: ansible_host == "192.168.3.1"
+      ios_config:
+        lines: 
+          - deny 192.168.3.0 0.0.0.255
+          - permit any
+        parents: ip access-list standard ROOM1
+   
+    - name: Implementing access group on Interface F0/1
+      when: ansible_host == "192.168.3.1"
+      ios_config:
+        lines: 
+          - int s0/0
+          - ip access-group ROOM1 out
+
+    - name: Implementing Access List for ROOM2
+      when: ansible_host == "192.168.7.1"
+      ios_config:
+        lines: 
+          - deny 192.168.7.0 0.0.0.255
+          - permit any
+        parents: ip access-list standard ROOM2
+   
+    - name: Implementing access group on Interface F0/1
+      when: ansible_host == "192.168.7.1"
+      ios_config:
+        lines: 
+          - int f0/0
+          - ip access-group ROOM2 out

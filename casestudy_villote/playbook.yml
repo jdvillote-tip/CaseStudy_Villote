@@ -1,0 +1,86 @@
+---
+
+- hosts: routers
+  gather_facts: false
+  connection: network_cli
+  become_method: enable
+#OSPF
+  tasks:
+    - name: OSPF configuration for R1
+      when: ansible_host == "10.0.1.1"
+      ios_config:
+        parents: router ospf 10
+        lines:
+          - router-id 1.1.1.1
+          - network 10.0.1.0 0.0.0.3 area 0
+          - network 10.0.0.0 0.0.0.3 area 0
+          - network 192.168.0.0 0.0.0.255 area 0
+          - network 192.168.3.0 0.0.0.255 area 0
+          - passive-interface FastEthernet0/0
+          - passive-interface FastEthernet0/1
+
+    - name: OSPF configuration for R2
+      when: ansible_host == "10.0.0.2"
+      ios_config:
+        parents: router ospf 10
+        lines:
+          - router-id 2.2.2.2
+          - network 10.0.0.0 0.0.0.3 area 0
+          - network 10.0.2.0 0.0.0.3 area 0
+          - default-information originate
+
+    - name: OSPF configuration for R3
+      when: ansible_host == "10.0.1.2"
+      ios_config:
+        parents: router ospf 10
+        lines:
+          - router-id 3.3.3.3
+          - network 10.0.1.0 0.0.0.3 area 0
+          - network 10.0.2.0 0.0.0.3 area 0
+          - network 192.168.1.0 0.0.0.255 area 0
+          - network 192.168.7.0 0.0.0.255 area 0
+          - passive-interface FastEthernet0/0
+          - passive-interface FastEthernet0/1
+          - default-information originate
+#ACL
+    - name: Implementing Access List for ROOM1
+      when: ansible_host == "192.168.3.1"
+      ios_config:
+        lines: 
+          - deny 192.168.3.0 0.0.0.255
+          - permit any
+        parents: ip access-list standard ROOM1
+   
+    - name: Implementing access group on Interface F0/1
+      when: ansible_host == "192.168.3.1"
+      ios_config:
+        lines: 
+          - int s0/0
+          - ip access-group ROOM1 out
+
+    - name: Implementing Access List for ROOM2
+      when: ansible_host == "192.168.7.1"
+      ios_config:
+        lines: 
+          - deny 192.168.7.0 0.0.0.255
+          - permit any
+        parents: ip access-list standard ROOM2
+   
+    - name: Implementing access group on Interface F0/1
+      when: ansible_host == "192.168.7.1"
+      ios_config:
+        lines: 
+          - int f0/0
+          - ip access-group ROOM2 out
+#AAA
+    - name: Configuring AAA login Authentication
+      ios_config:
+        commands:
+          - aaa new-model
+          - aaa authentication login default local
+
+    - name: Configuring the line console to implement the defined AAA authentication method
+      ios_config:
+        commands:
+          - login authentication default
+        parents: line console 0

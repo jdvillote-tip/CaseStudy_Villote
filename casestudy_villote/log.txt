@@ -1,0 +1,146 @@
+{
+  "interface": {
+    "FastEthernet0/0": {
+      "interface_is_ok": "YES",
+      "ip_address": "192.168.3.1",
+      "method": "manual",
+      "protocol": "up",
+      "status": "up"
+    },
+    "FastEthernet0/1": {
+      "interface_is_ok": "YES",
+      "ip_address": "192.168.0.1",
+      "method": "manual",
+      "protocol": "up",
+      "status": "up"
+    },
+    "FastEthernet1/0": {
+      "interface_is_ok": "YES",
+      "ip_address": "unassigned",
+      "method": "unset",
+      "protocol": "down",
+      "status": "administratively down"
+    },
+    "Serial0/0": {
+      "interface_is_ok": "YES",
+      "ip_address": "10.0.1.1",
+      "method": "manual",
+      "protocol": "up",
+      "status": "up"
+    },
+    "Serial0/1": {
+      "interface_is_ok": "YES",
+      "ip_address": "10.0.0.1",
+      "method": "manual",
+      "protocol": "up",
+      "status": "up"
+    }
+  }
+}
+{
+  "interface": {
+    "FastEthernet0/0": {
+      "interface_is_ok": "YES",
+      "ip_address": "unassigned",
+      "method": "NVRAM",
+      "protocol": "down",
+      "status": "administratively down"
+    },
+    "FastEthernet0/1": {
+      "interface_is_ok": "YES",
+      "ip_address": "unassigned",
+      "method": "NVRAM",
+      "protocol": "down",
+      "status": "administratively down"
+    },
+    "FastEthernet1/0": {
+      "interface_is_ok": "YES",
+      "ip_address": "unassigned",
+      "method": "NVRAM",
+      "protocol": "down",
+      "status": "administratively down"
+    },
+    "Serial0/0": {
+      "interface_is_ok": "YES",
+      "ip_address": "unassigned",
+      "method": "NVRAM",
+      "protocol": "down",
+      "status": "administratively down"
+    },
+    "Serial0/1": {
+      "interface_is_ok": "YES",
+      "ip_address": "10.0.0.2",
+      "method": "manual",
+      "protocol": "up",
+      "status": "up"
+    },
+    "Serial0/2": {
+      "interface_is_ok": "YES",
+      "ip_address": "10.0.2.1",
+      "method": "manual",
+      "protocol": "up",
+      "status": "up"
+    },
+    "Serial0/3": {
+      "interface_is_ok": "YES",
+      "ip_address": "unassigned",
+      "method": "unset",
+      "protocol": "down",
+      "status": "administratively down"
+    }
+  }
+}
+{
+  "interface": {
+    "FastEthernet0/0": {
+      "interface_is_ok": "YES",
+      "ip_address": "192.168.7.1",
+      "method": "manual",
+      "protocol": "up",
+      "status": "up"
+    },
+    "FastEthernet0/1": {
+      "interface_is_ok": "YES",
+      "ip_address": "192.168.1.1",
+      "method": "manual",
+      "protocol": "up",
+      "status": "up"
+    },
+    "FastEthernet1/0": {
+      "interface_is_ok": "YES",
+      "ip_address": "unassigned",
+      "method": "NVRAM",
+      "protocol": "down",
+      "status": "administratively down"
+    },
+    "Serial0/0": {
+      "interface_is_ok": "YES",
+      "ip_address": "10.0.1.2",
+      "method": "manual",
+      "protocol": "up",
+      "status": "up"
+    },
+    "Serial0/1": {
+      "interface_is_ok": "YES",
+      "ip_address": "unassigned",
+      "method": "NVRAM",
+      "protocol": "down",
+      "status": "administratively down"
+    },
+    "Serial0/2": {
+      "interface_is_ok": "YES",
+      "ip_address": "10.0.2.2",
+      "method": "manual",
+      "protocol": "up",
+      "status": "up"
+    },
+    "Serial0/3": {
+      "interface_is_ok": "YES",
+      "ip_address": "unassigned",
+      "method": "unset",
+      "protocol": "down",
+      "status": "administratively down"
+    }
+  }
+}
+

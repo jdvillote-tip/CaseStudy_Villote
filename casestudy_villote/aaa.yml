@@ -1,0 +1,17 @@
+- hosts: routers
+  gather_facts: no
+  connection: network_cli
+  become_method: enable
+
+  tasks:
+    - name: Configuring AAA login Authentication
+      ios_config:
+        commands:
+          - aaa new-model
+          - aaa authentication login default local
+
+    - name: Configuring the line console to implement the defined AAA authentication method
+      ios_config:
+        commands:
+          - login authentication default
+        parents: line console 0
